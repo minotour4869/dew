@@ -32,23 +32,7 @@ var submitCommand = &cobra.Command{
 				log.Fatal("please check codeFile field in ./codeforces/config.yaml")
 			}
 		}
-		var problem string
-		if len(args) == 1 {
-			if len(args[0]) == 1 {
-				if viper.GetString("race") == "" {
-					log.Fatal("please use cf race first")
-				} else {
-					problem = viper.GetString("race") + args[0]
-				}
-			} else {
-				problem = args[0]
-			}
-		} else {
-			problem = viper.GetString("problem")
-			if problem == "" {
-				log.Fatal("please specify a problem first")
-			}
-		}
+		var problem = getProblem(args)
 		contest, index := splitProblem(problem)
 		code, err := ioutil.ReadFile(file)
 		if err != nil {
@@ -66,4 +50,25 @@ var submitCommand = &cobra.Command{
 			OpenWebsite(codeforcesDomain + "/contest/" + contest + "/my")
 		}
 	},
+}
+
+func getProblem(args []string) string {
+	var problem string
+	if len(args) == 1 {
+		if len(args[0]) <= 2 {
+			if viper.GetString("race") == "" {
+				log.Fatal("please use cf race first")
+			} else {
+				problem = viper.GetString("race") + args[0]
+			}
+		} else {
+			problem = args[0]
+		}
+	} else {
+		problem = viper.GetString("problem")
+		if problem == "" {
+			log.Fatal("please specify a problem first")
+		}
+	}
+	return problem
 }

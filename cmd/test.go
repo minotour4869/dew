@@ -39,23 +39,7 @@ var testCmd = &cobra.Command{
 				log.Fatal("please check codeFile field in ./codeforces/config.yaml")
 			}
 		}
-		var problem string
-		if len(args) == 1 {
-			if len(args[0]) == 1 {
-				if viper.GetString("race") == "" {
-					log.Fatal("please use race command first")
-				} else {
-					problem = viper.GetString("race") + args[0]
-				}
-			} else {
-				problem = args[0]
-			}
-		} else {
-			problem = viper.GetString("problem")
-			if problem == "" {
-				log.Fatal("please specify a problem first")
-			}
-		}
+		var problem = getProblem(args)
 		language := viper.GetString("lang")
 		lan, ok := lang.LangDic[language]
 		if !ok {
