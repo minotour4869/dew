@@ -1,6 +1,7 @@
 *.yaml
 
 *.json
+!ladders.json
 
 cf
 
@@ -8,3 +9,5 @@ cf
 random.helloWorld
 default.cpp
 /codeforces
+.direnv/
+.envrc
