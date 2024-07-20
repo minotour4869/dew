@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/Kanna-Neko/dew/cmd"
+	"github.com/minotour4869/dew/cmd"
 )
 
 func main() {

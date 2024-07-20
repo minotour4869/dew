@@ -117,8 +117,8 @@ func configFunc() {
 	initContestTemplate()
 	cj := uispinner.New()
 	defer cj.Stop()
-	// no1 := cj.AddSpinner(spinner.CharSets[34], 100*time.Millisecond).SetPrefix("user rating is initing").SetComplete("user rating init complete")
-	// defer no1.Done()
+	no1 := cj.AddSpinner(spinner.CharSets[34], 100*time.Millisecond).SetPrefix("user rating is initing").SetComplete("user rating init complete")
+	defer no1.Done()
 	cj.Start()
 	SaveRating(handle)
 }
