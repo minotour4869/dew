@@ -1,8 +1,9 @@
-module github.com/Kanna-Neko/dew
+module github.com/minotour4869/dew
 
 go 1.18
 
 require (
+	github.com/Kanna-Neko/dew v1.2.14
 	github.com/PuerkitoBio/goquery v1.8.0
 	github.com/charmbracelet/bubbles v0.14.0
 	github.com/charmbracelet/bubbletea v0.23.1
